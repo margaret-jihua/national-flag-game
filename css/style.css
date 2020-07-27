@@ -3,3 +3,8 @@ body{
     text-align: center;
     background-color: bisque;
 }
+
+h1{
+    font-size: 3rem;
+    text-shadow: 2px 2px rgb(241, 185, 100);
+}
