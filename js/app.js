@@ -116,3 +116,9 @@ playerChoices.forEach(choice => {
 })
 
 // Close the result window
+
+close.addEventListener('click', function() {
+    resultWindow.style.display = 'none'
+    setTimeout(displayOptions(),100)
+    playerChoices.forEach(e => {e.disabled = false})
+})
