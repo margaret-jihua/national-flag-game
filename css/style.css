@@ -23,31 +23,20 @@ button {
 }
 
 button:hover {
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 12px 13px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
-/* hide the default radio appearance */
-input[type="radio"] {
-    opacity: 0;
-    width: 0;
-}
-
-label {
+.option {
     display: inline-block;
     background-color: lightsteelblue;
-    font-size: 20px;
-    width: 180px;
+    width: 250px;
     margin: 7px;
     padding: 5px;
     text-align: start;
 }
 
-label:hover {
+.option:hover {
     background-color: lightblue;
-}
-
-input[type="radio"]:checked + label {
-    background-color: lightskyblue;
 }
 
 .container {
@@ -62,11 +51,11 @@ input[type="radio"]:checked + label {
 
 .intro {
     margin: 100px 150px 0;
-    display: none;
+    /* display: none; */
 }
 
 .quiz {
-    /* display: none; */
+    display: none;
     background-color: cornsilk; 
     opacity: 95%;
     margin: 70px 100px;
