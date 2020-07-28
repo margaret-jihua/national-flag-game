@@ -1,3 +1,5 @@
+/* Tags */
+
 body {
     font-family: monospace;
     text-align: center;
@@ -7,7 +9,7 @@ body {
 h1 {
     font-family: cursive;
     font-size: 3rem;
-    text-shadow: 2px 2px rgb(241, 185, 100);
+    text-shadow: 2px 2px rgb(61, 39, 6);
 }
 
 h2 {
@@ -26,18 +28,7 @@ button:hover {
     box-shadow: 0 12px 13px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
-.option {
-    display: inline-block;
-    background-color: lightsteelblue;
-    width: 250px;
-    margin: 7px;
-    padding: 5px;
-    text-align: start;
-}
-
-.option:hover {
-    background-color: lightblue;
-}
+/* Classes */
 
 .container {
     margin: auto;
@@ -69,13 +60,47 @@ button:hover {
 .flag {
     height: 120px;
     width: 180px;
-    opacity: 100%;
+    margin: 20px;
 }
 
-.submit {
+.option {
+    display: inline-block;
+    background-color: lightsteelblue;
+    width: 250px;
     margin: 7px;
-
+    padding: 5px;
+    text-align: start;
 }
+
+.option:hover {
+    background-color: lightblue;
+}
+
+.result {
+    display: none;
+    background-color: lightsalmon;
+    opacity: 95%;
+    height: 300px;
+    width: 250px;
+    border: salmon solid;
+    border-radius: 10px;
+    position: absolute;
+    top: 250px;
+    left: 40%;
+}
+
+.display-result {
+    color: sienna;
+    font-size: 1.5rem;
+}
+
+.countryInfo {
+    text-align: start;
+    margin: 10px;
+    height: 200px;
+}
+
+/* IDs */
 
 #flag-globe {
     height: 150px;
@@ -86,8 +111,14 @@ button:hover {
     opacity: 90%;
     display: block;
     color: cornsilk;
-    background-color: rgb(97, 68, 30);
+    background-color: rgb(73, 49, 18);
 }
 
+#close-btn{
+    background-color: seashell;
+    padding: 5px;
+    /* position: relative;
+    top: 250px; */
+}
 
 
