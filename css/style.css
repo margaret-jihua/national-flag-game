@@ -15,8 +15,39 @@ h2 {
     opacity: 80%;
 }
 
+button {
+    border: none;
+    font-size: 1rem;
+    margin: auto;
+    padding: 10px;
+}
+
 button:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+/* hide the default radio appearance */
+input[type="radio"] {
+    opacity: 0;
+    width: 0;
+}
+
+label {
+    display: inline-block;
+    background-color: lightsteelblue;
+    font-size: 20px;
+    width: 180px;
+    margin: 7px;
+    padding: 5px;
+    text-align: start;
+}
+
+label:hover {
+    background-color: lightblue;
+}
+
+input[type="radio"]:checked + label {
+    background-color: lightskyblue;
 }
 
 .container {
@@ -24,13 +55,37 @@ button:hover {
     height: 500px;
     width: 850px;
     border: rgb(97, 56, 4) 4px solid;
-    background-image: url('https://pixabay.com/get/53e9d0444353b108feda8460da2932771037d8ec5b5676_1920.png');
+    background-image: url('../images/world-map-background.png');
     background-size: cover;
     background-position: center;
 }
 
 .intro {
     margin: 100px 150px 0;
+    display: none;
+}
+
+.quiz {
+    /* display: none; */
+    background-color: cornsilk; 
+    opacity: 95%;
+    margin: 70px 100px;
+    height: 350px;
+}
+
+.status {
+    margin: 20px;
+}
+
+.flag {
+    height: 120px;
+    width: 180px;
+    opacity: 100%;
+}
+
+.submit {
+    margin: 7px;
+
 }
 
 #flag-globe {
@@ -39,13 +94,11 @@ button:hover {
 }
 
 #play-btn {
+    opacity: 90%;
     display: block;
-    padding: 10px;
-    margin: auto;
-    border: none;
     color: cornsilk;
     background-color: rgb(97, 68, 30);
-    opacity: 90%;
-    font-size: 1rem;
 }
+
+
 
