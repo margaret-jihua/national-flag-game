@@ -20,13 +20,13 @@ let numOfCountries
 let answerIndex
 let answer
 let result
-let options = []
-let optionText = []
 let usedIndex = []
 
 // Display random chosen countries along with the flag country
 
 function displayOptions() {
+    let options = []
+    let optionText = []
 
     // get a random country index, set up flag and answer
     answerIndex = Math.floor(Math.random() * numOfCountries)
@@ -115,7 +115,7 @@ playerChoices.forEach(choice => {
     })
 })
 
-// Close the result window
+// Close the result window & get into next quiz
 
 close.addEventListener('click', function() {
     resultWindow.style.display = 'none'

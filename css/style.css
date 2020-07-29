@@ -9,12 +9,19 @@ body {
 h1 {
     font-family: cursive;
     font-size: 3rem;
-    text-shadow: 2px 2px rgb(61, 39, 6);
+    text-shadow: 2px 2px rgb(145, 114, 68);
 }
 
 h2 {
     background-color: white;
     opacity: 80%;
+}
+
+p {
+    display: inline;
+    font-family: Arial;
+    font-weight: 900;
+    color: darkolivegreen;
 }
 
 button {
@@ -42,25 +49,44 @@ button:hover {
 
 .intro {
     margin: 100px 150px 0;
-    /* display: none; */
+    display: none;
 }
 
 .quiz {
-    display: none;
+    /* display: none; */
     background-color: cornsilk; 
     opacity: 95%;
     margin: 70px 100px;
     height: 350px;
 }
 
+.status-bar {
+    display: inline;
+}
+
+.hearts {
+    margin: 20px;
+    float: left;
+}
+
+.heart {
+    height: 18px;
+    width: 18px;
+}
+
 .status {
     margin: 20px;
+    float: right;
+}
+
+.score-bar {
+    display: inline-block;
 }
 
 .flag {
     height: 120px;
     width: 180px;
-    margin: 20px;
+    margin: 55px 20px 20px 30px;
 }
 
 .option {
@@ -119,6 +145,16 @@ button:hover {
     display: block;
     color: cornsilk;
     background-color: rgb(73, 49, 18);
+}
+
+#restart {
+    position: relative;
+    top: 20px;
+    color: darkseagreen;
+}
+
+#restart:hover {
+    color: olivedrab;
 }
 
 #close-btn{

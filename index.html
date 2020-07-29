@@ -8,25 +8,52 @@
 </head>
 <body>
     <h1>Guess The Flag</h1>
+
     <div class="container">
 
         <div class="intro">
             <h2>Flags help us to identify different countries around the world. A country's flag is made up of symbols, colours and sometimes phrases that represent its identity or character.Can you tell what country the flag belongs to?</h2>
-            <img id="flag-globe" src="https://1.bp.blogspot.com/-Os_G7fBordU/W1dFCdFA3AI/AAAAAAAAp-I/NLfM0h9Nvw42dtkvBlgzC_1_QFmKHBEVgCLcBGAs/s1600/world_flags_globe_1.gif">
+            <img id="flag-globe" src="./images/world_flags_globe.gif">
             <button id="play-btn">Let's Play</button>
         </div>
         
         <div class="quiz">
-            <div class="status"> 
-              ❤️❤️❤️❤️❤️
+
+            <div class="status-bar">
+
+                <div class="hearts">
+                    <img class="heart" src="./images/heart-animation.gif" alt="heart">
+                    <img class="heart" src="./images/heart-animation.gif" alt="heart">
+                    <img class="heart" src="./images/heart-animation.gif" alt="heart">
+                    <img class="heart" src="./images/heart-animation.gif" alt="heart">
+                    <img class="heart" src="./images/heart-animation.gif" alt="heart">
+                </div>
+
+                <p id="restart">
+                    Restart
+                </p> 
+
+                <div class="status">
+                    <div class="score-bar">
+                        <p>Correct: </p>
+                        <p id="correct">0</p>
+                    </div>
+                    <div class="score-bar">
+                        <p>| Wrong: </p>
+                        <p id="wrong">0</p>
+                    </div>
+                </div>
             </div>
+
             <img class="flag" src="https://restcountries.eu/data/afg.svg" alt="flag">
+
             <div class="options"> 
                 <button id="a" class="option">a</button>
                 <button id="b" class="option">b</button><br>
                 <button id="c" class="option">c</button>
                 <button id="d" class="option">d</button>
             </div>
+
             <div class="result">
                 <div class="display-result">Correct!</div>
                 <div class="countryInfo">
@@ -39,7 +66,6 @@
                 <button id="close-btn">Close</button>
             </div>
         </div>
-
     </div>
     
     <script src="js/app.js"></script>
