@@ -19,6 +19,11 @@ let subregion = document.querySelector('.subregion')
 let area = document.querySelector('.area')
 let population = document.querySelector('.population')
 let close = document.querySelector('#close-btn')
+let gameover = document.querySelector('.gameover')
+let finalCorrect = document.querySelector('#final-correct')
+let totalQuiz = document.querySelector('#total-quiz')
+let finalScore = document.querySelector('#score')
+let playAgain = document.querySelector('.play-again')
 let countriesData
 let numOfCountries
 let answerIndex
@@ -27,7 +32,7 @@ let result
 let correctCount = 0
 let wrongCount = 0
 let heartCount = 4
-let usedIndex = []
+let usedIndex = [] // haven't use yet
 
 // Display random chosen countries along with the flag country
 
@@ -90,14 +95,29 @@ function showResult(theChoice){
     area.textContent = 'Area: ' + countriesData[answerIndex]["area"]
     population.textContent = 'Population: ' + countriesData[answerIndex]["population"]
     playerChoices.forEach(e => {e.disabled = true})
-    if (heartCount < 0){
-        showEndGame()
-    }
 }
 
-// Show the game is over
+// Restart the game
+
+function gameRestart() {
+    correctCount = 0
+    correct.textContent = 0
+    wrongCount = 0
+    wrong.textContent = 0
+    heartCount = 4
+    heart.forEach(e => {e.style.display = 'block'})
+    setTimeout(displayOptions(),600)
+}
+
+// Show the game is over and display score
 function showEndGame(){
-    
+    quiz.style.display = 'none'
+    gameover.style.display = 'block'
+    let total = correctCount + wrongCount
+    let score = Math.floor(correctCount / total * 100)
+    finalCorrect.textContent = correctCount
+    totalQuiz.textContent = total
+    finalScore.textContent = score
 }
 
 // Fetch info from API
@@ -140,18 +160,28 @@ playerChoices.forEach(choice => {
 
 close.addEventListener('click', function() {
     resultWindow.style.display = 'none'
-    setTimeout(displayOptions(),500)
+    setTimeout(displayOptions(),600)
     playerChoices.forEach(e => {e.disabled = false})
+    // if no more hearts show gameover
+    if (heartCount < 0){
+        setTimeout(showEndGame(),600)
+    }
 })
 
-// Click restart
+// Click [restart]
 
 restart.addEventListener('click', function() {
-    correctCount = 0
-    correct.textContent = 0
-    wrongCount = 0
-    wrong.textContent = 0
-    heartCount = 4
-    heart.forEach(e => {e.style.display = 'block'})
-    setTimeout(displayOptions(),500)
+    gameRestart()
 })
+
+// Click [Play Again]
+playAgain.addEventListener('click', function() {
+    gameover.style.display = 'none'
+    quiz.style.display = 'block'
+    gameRestart()
+})
+
+
+// Drag result window
+
+// resultWindow.addEventListener('drag', )

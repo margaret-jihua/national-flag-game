@@ -14,7 +14,8 @@ Flags help us to identify different countries around the world. A country's flag
 4. Set up a result window to display Correct/Wrong, show some info of the flag country, and a close button to go to next quiz
 5. Set up status bar to display hearts, scroes and restart
 6. Add functionality of status bar
-7. Show gameover when player loose all five hearts
+7. Show gameover when player lose all five hearts
+8. Make the result window moveable
 
 ## Open Source API
 

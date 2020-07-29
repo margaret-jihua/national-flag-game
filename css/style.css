@@ -9,7 +9,7 @@ body {
 h1 {
     font-family: cursive;
     font-size: 3rem;
-    text-shadow: 2px 2px rgb(145, 114, 68);
+    text-shadow: 2px 2px rgb(145, 114, 68, 0.6);
 }
 
 h2 {
@@ -53,44 +53,75 @@ button:hover {
 
 .quiz {
     display: none;
-    background-color: cornsilk; 
-    opacity: 95%;
+    background-color: rgb(255, 248, 220, 0.8); 
     margin: 70px 100px;
     height: 350px;
 }
 
-.status-bar {
+.gameover {
+    display: none;
+    height: 350px;
+    margin: 70px 100px;
+    color: mintcream;
+    background-color: rgb(211, 105, 29, 0.6) ;
+}
+
+.gameover p {
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.5;
+    text-shadow: rgb(58, 127, 216) 1px 1px;
+}
+
+.gameover h3 {
+    text-shadow: rgb(29, 63, 34) 2px 2px;
+    font-weight: 500;
+    font-size: 2rem;
+    margin: 0 0 15px;
+}
+
+.gameover button {
+    position: relative;
+    /* top: 200px; */
+    background-color: rgb(230, 212, 113);
+}
+
+.gameover button:hover {
+    background-color: chocolate;
+}
+
+.quiz .status-bar {
     display: grid;
     grid-template-columns: 2fr 1fr 2fr;
 }
 
-.hearts {
+.quiz .hearts {
     margin: 20px;
 }
 
-.heart {
+.quiz .heart {
     height: 18px;
     width: 18px;
     float: left;
     margin: 3px;
 }
 
-.status {
+.quiz .status {
     color: darkolivegreen;
     margin: 20px;
 }
 
-.score-bar {
+.quiz .score-bar {
     display: inline-block;
 }
 
-.flag {
+.quiz .flag {
     height: 120px;
     width: 180px;
     margin-bottom: 20px;
 }
 
-.option {
+.quiz .option {
     display: inline-block;
     background-color: lightsteelblue;
     width: 250px;
@@ -103,7 +134,7 @@ button:hover {
     background-color: lightblue;
 }
 
-.result {
+.quiz .result {
     display: none;
     background-color: lightsalmon;
     opacity: 95%;
@@ -116,50 +147,56 @@ button:hover {
     left: 40%;
 }
 
-.display-result {
+.result .display-result {
     color: sienna;
-    font-size: 1.5rem;
-    text-shadow: 2px 2px rgb(29, 28, 28)
+    font-size: 1.8rem;
+    text-shadow: 2px 2px rgb(92, 25, 25, 0.4)
 }
 
-.countryInfo {
+.result .countryInfo {
     text-align: start;
     margin: 10px;
     height: 200px;
 }
 
-.name {
+.result .name {
     font-size: 22px;
     font-family: fantasy;
     margin-bottom: 0;
 }
 
-.restart {
+.quiz .restart {
     color: darkseagreen;
     margin: 20px;
 }
 
+.restart:hover {
+    color: olive;
+}
+
 /* IDs */
 
-#flag-globe {
+.intro #flag-globe {
     height: 150px;
     width: 150px;
 }
 
-#play-btn {
+.intro #play-btn {
     opacity: 90%;
     display: block;
     color: cornsilk;
     background-color: rgb(73, 49, 18);
 }
 
-#restart:hover {
-    color: olivedrab;
-}
-
-#close-btn{
+.result #close-btn{
     background-color: seashell;
     padding: 5px;
+}
+
+.gameover #flag-globe-2 {
+    height: 120px;
+    width: 120px;
+    margin: 20px;
 }
 
 
