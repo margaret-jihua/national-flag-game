@@ -21,7 +21,6 @@ p {
     display: inline;
     font-family: Arial;
     font-weight: 900;
-    color: darkolivegreen;
 }
 
 button {
@@ -49,11 +48,11 @@ button:hover {
 
 .intro {
     margin: 100px 150px 0;
-    display: none;
+    /* display: none; */
 }
 
 .quiz {
-    /* display: none; */
+    display: none;
     background-color: cornsilk; 
     opacity: 95%;
     margin: 70px 100px;
@@ -61,22 +60,24 @@ button:hover {
 }
 
 .status-bar {
-    display: inline;
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
 }
 
 .hearts {
     margin: 20px;
-    float: left;
 }
 
 .heart {
     height: 18px;
     width: 18px;
+    float: left;
+    margin: 3px;
 }
 
 .status {
+    color: darkolivegreen;
     margin: 20px;
-    float: right;
 }
 
 .score-bar {
@@ -86,7 +87,7 @@ button:hover {
 .flag {
     height: 120px;
     width: 180px;
-    margin: 55px 20px 20px 30px;
+    margin-bottom: 20px;
 }
 
 .option {
@@ -133,6 +134,11 @@ button:hover {
     margin-bottom: 0;
 }
 
+.restart {
+    color: darkseagreen;
+    margin: 20px;
+}
+
 /* IDs */
 
 #flag-globe {
@@ -145,12 +151,6 @@ button:hover {
     display: block;
     color: cornsilk;
     background-color: rgb(73, 49, 18);
-}
-
-#restart {
-    position: relative;
-    top: 20px;
-    color: darkseagreen;
 }
 
 #restart:hover {

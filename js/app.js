@@ -1,6 +1,10 @@
 let play = document.querySelector('#play-btn')
 let intro = document.querySelector('.intro')
 let quiz = document.querySelector('.quiz')
+let heart = document.querySelectorAll('.heart')
+let restart = document.querySelector('.restart')
+let correct = document.querySelector('#correct')
+let wrong = document.querySelector('#wrong')
 let flag = document.querySelector('.flag')
 let playerChoices = document.querySelectorAll('.option')
 let a = document.querySelector('#a')
@@ -20,6 +24,9 @@ let numOfCountries
 let answerIndex
 let answer
 let result
+let correctCount = 0
+let wrongCount = 0
+let heartCount = 4
 let usedIndex = []
 
 // Display random chosen countries along with the flag country
@@ -61,14 +68,20 @@ function displayOptions() {
     d.textContent = optionText[3]  
 }
 
-// Show the result Window
+// Show the result Window and change status bar
 
 function showResult(theChoice){
     if (theChoice === answer) {
         result = 'Correct!'
+        correctCount ++
+        correct.textContent = correctCount
     }
     else {
         result = 'oops Wrong...'
+        wrongCount ++
+        wrong.textContent = wrongCount
+        heart[heartCount].style.display = 'none'
+        heartCount --
     }
     displayResult.textContent = result
     countryName.textContent = answer
@@ -77,6 +90,14 @@ function showResult(theChoice){
     area.textContent = 'Area: ' + countriesData[answerIndex]["area"]
     population.textContent = 'Population: ' + countriesData[answerIndex]["population"]
     playerChoices.forEach(e => {e.disabled = true})
+    if (heartCount < 0){
+        showEndGame()
+    }
+}
+
+// Show the game is over
+function showEndGame(){
+    
 }
 
 // Fetch info from API
@@ -103,7 +124,7 @@ play.addEventListener('click', function() {
     intro.style.display = 'none'
     setTimeout(function(){
         quiz.style.display = 'block'
-    },100)
+    },200)
 })
 
 // Player make a choice
@@ -119,6 +140,18 @@ playerChoices.forEach(choice => {
 
 close.addEventListener('click', function() {
     resultWindow.style.display = 'none'
-    setTimeout(displayOptions(),100)
+    setTimeout(displayOptions(),500)
     playerChoices.forEach(e => {e.disabled = false})
+})
+
+// Click restart
+
+restart.addEventListener('click', function() {
+    correctCount = 0
+    correct.textContent = 0
+    wrongCount = 0
+    wrong.textContent = 0
+    heartCount = 4
+    heart.forEach(e => {e.style.display = 'block'})
+    setTimeout(displayOptions(),500)
 })

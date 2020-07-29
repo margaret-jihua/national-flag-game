@@ -10,10 +10,11 @@ Flags help us to identify different countries around the world. A country's flag
 
 1. Set up Intro page layout and play button
 2. Set up quiz by displaying a random flag, randomly choose 3 other countries, place them into options
-3. click play button to display the quiz
+3. Click play button to display the quiz
 4. Set up a result window to display Correct/Wrong, show some info of the flag country, and a close button to go to next quiz
 5. Set up status bar to display hearts, scroes and restart
 6. Add functionality of status bar
+7. Show gameover when player loose all five hearts
 
 ## Open Source API
 
