@@ -1,4 +1,5 @@
 let play = document.querySelector('#play-btn')
+let speaker = document.querySelector('#speaker')
 let intro = document.querySelector('.intro')
 let quiz = document.querySelector('.quiz')
 let heart = document.querySelectorAll('.heart')
@@ -14,8 +15,8 @@ let d = document.querySelector('#d')
 let resultWindow = document.querySelector('.result')
 let displayResult = document.querySelector('.display-result')
 let countryName = document.querySelector('.name')
-let capital = document.querySelector('.capital')
 let subregion = document.querySelector('.subregion')
+let capital = document.querySelector('.capital')
 let area = document.querySelector('.area')
 let population = document.querySelector('.population')
 let close = document.querySelector('#close-btn')
@@ -32,6 +33,7 @@ let result
 let correctCount = 0
 let wrongCount = 0
 let heartCount = 4
+let soundON = true
 let usedIndex = [] // haven't use yet
 
 // Display random chosen countries along with the flag country
@@ -81,7 +83,8 @@ function showResult(theChoice){
         correctCount ++
         correct.textContent = correctCount
         let corroctSound = new Audio('./sounds/correct.mp3')
-        corroctSound.play()
+        if (soundON) { corroctSound.play() }
+        
     }
     else {
         result = 'oops Wrong...'
@@ -90,12 +93,12 @@ function showResult(theChoice){
         heart[heartCount].style.display = 'none'
         heartCount --
         let wrongSound = new Audio('./sounds/incorrect.mp3')
-        wrongSound.play()
+        if (soundON) { wrongSound.play() }
     }
     displayResult.textContent = result
     countryName.textContent = answer
-    capital.textContent = 'Capital: ' + countriesData[answerIndex]["capital"]
     subregion.textContent = 'Subregion: ' + countriesData[answerIndex]["subregion"]
+    capital.textContent = 'Capital: ' + countriesData[answerIndex]["capital"]
     area.textContent = 'Area: ' + countriesData[answerIndex]["area"]
     population.textContent = 'Population: ' + countriesData[answerIndex]["population"]
     playerChoices.forEach(e => {e.disabled = true})
@@ -123,7 +126,7 @@ function showEndGame(){
     totalQuiz.textContent = total
     finalScore.textContent = score
     let endGameSound = new Audio('./sounds/gameover.wav')
-    endGameSound.play()
+    if (soundON) { endGameSound.play() }    
 }
 
 // Fetch info from API
@@ -151,6 +154,8 @@ play.addEventListener('click', function() {
     setTimeout(function(){
         quiz.style.display = 'block'
     },200)
+    let beginSound = new Audio('./sounds/begin.mp3')
+    if (soundON) { beginSound.play() }
 })
 
 // Player make a choice
@@ -187,7 +192,20 @@ playAgain.addEventListener('click', function() {
     gameRestart()
 })
 
+// Toggle speaker icon
+
+speaker.addEventListener('click', function() {
+    let source = speaker.getAttribute('src')
+    if (source === './images/sound-on.png') {
+        speaker.setAttribute('src','./images/mute.png')
+        soundON = false
+    }
+    else {
+        speaker.setAttribute('src', './images/sound-on.png')
+        soundON = true
+    }
+})
 
 // Drag result window
 
-// resultWindow.addEventListener('drag', )
+// resultWindow.addEventListener('mousedown', )

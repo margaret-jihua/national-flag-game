@@ -17,7 +17,8 @@ Flags help us to identify different countries around the world. A country's flag
 7. Show gameover when player lose all five hearts
 8. Display final score
 9. Add sound effect
-10. Make the result window moveable
+10. Add sound on/off sign
+11. Make the result window moveable
 
 ## Open Source API
 

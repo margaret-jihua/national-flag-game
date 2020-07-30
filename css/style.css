@@ -48,11 +48,11 @@ button:hover {
 
 .intro {
     margin: 100px 150px 0;
-    display: none;
+    /* display: none; */
 }
 
 .quiz {
-    /* display: none; */
+    display: none;
     background-color: rgb(255, 248, 220, 0.8); 
     margin: 70px 100px;
     height: 350px;
@@ -175,6 +175,20 @@ button:hover {
 }
 
 /* IDs */
+
+#speaker {
+    position: relative;
+    float: left;
+    left: 40px;
+    top: 30px;
+    transition: 0.2s;
+}
+
+#speaker:active {
+    transform: translateY(4px) translateX(2px);
+    opacity: 70%;
+    transition: 0s;
+}
 
 .intro #flag-globe {
     height: 150px;
