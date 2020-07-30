@@ -24,8 +24,9 @@ Player has five hearts, if the wrong answer was clicked, one heart lost; if all 
 10. Add sound effect
 11. Add sound on/off symbol
 12. Add favicon to the title
-12. Make the result window moveable
-13. organize code, add div section to some css elements
+13. Make the result window moveable
+14. Allow the result window only move within the container div
+15. organize code, add div section to some css elements
 
 ## Open Source API
 

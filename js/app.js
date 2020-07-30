@@ -1,3 +1,4 @@
+let container = document.querySelector('.container')
 let play = document.querySelector('#play-btn')
 let speaker = document.querySelector('#speaker')
 let intro = document.querySelector('.intro')
@@ -206,6 +207,35 @@ speaker.addEventListener('click', function() {
     }
 })
 
-// Drag result window
+// Drag result window anywhere within container div
 
-// resultWindow.addEventListener('mousedown', )
+resultWindow.addEventListener('mousedown', function (event) {
+    
+    let edgeX = container.getBoundingClientRect().left
+    let edgeY = container.getBoundingClientRect().top
+
+    let shiftX = event.clientX - resultWindow.getBoundingClientRect().left
+    let shiftY = event.clientY - resultWindow.getBoundingClientRect().top
+
+    // get current coordinate and then set position to absolute
+    resultWindow.style.position = 'absolute'
+    moveAt(event.clientX, event.clientY)
+
+    function moveAt (x, y) {
+        resultWindow.style.left = x - shiftX + 'px'
+        resultWindow.style.top = y - shiftY + 'px'
+    }
+
+    function onMove (event) {
+        moveAt(event.clientX, event.clientY)
+    }    
+    
+    resultWindow.addEventListener('mousemove', onMove)
+    resultWindow.onmouseup = function() {
+        resultWindow.removeEventListener('mousemove', onMove)
+        resultWindow.onmouseup = null
+    }
+        
+    resultWindow.ondragstart = function () {return false}
+
+})

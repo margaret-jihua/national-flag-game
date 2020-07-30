@@ -58,6 +58,19 @@ button:hover {
     height: 350px;
 }
 
+.result {
+    display: none;
+    background-color: lightsalmon;
+    opacity: 95%;
+    height: 300px;
+    width: 250px;
+    border: salmon solid;
+    border-radius: 10px;
+    position: relative;
+    bottom: 80%;
+    left: 35%;
+}
+
 .gameover {
     display: none;
     height: 350px;
@@ -132,19 +145,6 @@ button:hover {
 
 .option:hover {
     background-color: lightblue;
-}
-
-.quiz .result {
-    display: none;
-    background-color: lightsalmon;
-    opacity: 95%;
-    height: 300px;
-    width: 250px;
-    border: salmon solid;
-    border-radius: 10px;
-    position: absolute;
-    top: 250px;
-    left: 40%;
 }
 
 .result .display-result {
