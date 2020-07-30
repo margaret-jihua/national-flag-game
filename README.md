@@ -15,7 +15,9 @@ Flags help us to identify different countries around the world. A country's flag
 5. Set up status bar to display hearts, scroes and restart
 6. Add functionality of status bar
 7. Show gameover when player lose all five hearts
-8. Make the result window moveable
+8. Display final score
+9. Add sound effect
+10. Make the result window moveable
 
 ## Open Source API
 

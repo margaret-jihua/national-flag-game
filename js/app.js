@@ -80,6 +80,8 @@ function showResult(theChoice){
         result = 'Correct!'
         correctCount ++
         correct.textContent = correctCount
+        let corroctSound = new Audio('./sounds/correct.mp3')
+        corroctSound.play()
     }
     else {
         result = 'oops Wrong...'
@@ -87,6 +89,8 @@ function showResult(theChoice){
         wrong.textContent = wrongCount
         heart[heartCount].style.display = 'none'
         heartCount --
+        let wrongSound = new Audio('./sounds/incorrect.mp3')
+        wrongSound.play()
     }
     displayResult.textContent = result
     countryName.textContent = answer
@@ -118,6 +122,8 @@ function showEndGame(){
     finalCorrect.textContent = correctCount
     totalQuiz.textContent = total
     finalScore.textContent = score
+    let endGameSound = new Audio('./sounds/gameover.wav')
+    endGameSound.play()
 }
 
 // Fetch info from API
