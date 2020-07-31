@@ -25,7 +25,7 @@ Player has five hearts, if the wrong answer was clicked, one heart lost; if all 
 11. Add sound on/off symbol
 12. Add favicon to the title
 13. Make the result window moveable
-14. Allow the result window only move within the container div
+14. Allow the result window only move within the container div --- did not make it
 15. After close the result window, it returns back to original position
 16. organize code, add div section to some css elements
 
@@ -160,7 +160,7 @@ close.addEventListener('click', function() {
 
 ## Challenge 4
 
-### Let the reslute window only moves inside the container div
+### Let the result window only moves inside the container div
 
 Add condition: 
 ```
@@ -182,6 +182,7 @@ if (resultWindow.getBoundingClientRect().left < edgeX) {
 * Note that `getBoundingClientRect().left` returns a number
 
 __This method work for left and top edges, but not right and bottom edges__
+
 Possible solution...
 
 

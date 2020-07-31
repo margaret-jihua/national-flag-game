@@ -68,7 +68,7 @@ function displayOptions() {
         let text = countriesData[options[i]]["name"]
         optionText.push(text)
     }
-    
+
     // console.log(answerIndex, options, optionText)
 
     // display country names stored in optionText[]
@@ -255,7 +255,7 @@ resultWindow.addEventListener('mousedown', function (event) {
 
         resultWindow.style.left = x - shiftX + 'px'
         resultWindow.style.top = y - shiftY + 'px'
-
+        
         // set boundry for result window
         // Doesn't work if there is scroll in the browser
         // if (x - edgeLeft < x - windowLeft) {
@@ -282,7 +282,6 @@ resultWindow.addEventListener('mousedown', function (event) {
         resultWindow.removeEventListener('mousemove', onMove)
         resultWindow.onmouseup = null
     }
-
 })
 
 // prevent conflict with browser's default drag’n’drop support
