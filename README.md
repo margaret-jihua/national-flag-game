@@ -31,6 +31,44 @@ Player has five hearts, if the wrong answer was clicked, one heart lost; if all 
 
 ## Challenge 1 
 
+### Set up Quiz
+
+- Randomly choose a countries as answer and display its flag
+```
+    answerIndex = Math.floor(Math.random() * numOfCountries)
+    flag.setAttribute('src', countriesData[answerIndex]["flag"])
+    answer = countriesData[answerIndex]["name"]
+```
+- Randomly choose 3 other countries store their index into array `options`
+```
+    let i = 0
+    while (i < 3) {
+        let index = Math.floor(Math.random() * numOfCountries)
+        if(index !== answerIndex && !options.includes(index)){
+            options.push(index)
+            i++
+        }
+    }
+```
+- Randomly choose a position in `options` and then insert answer in it by array method `splice()`
+```
+    let answerOption = Math.floor(Math.random() * 4)
+    options.splice(answerOption, 0, answerIndex)
+```
+- Store the corresponding names into array `optionText` and display them
+```
+    for (let i = 0; i < 4; i++) {
+        let text = countriesData[options[i]]["name"]
+        optionText.push(text)
+    }
+    a.textContent = optionText[0]
+    b.textContent = optionText[1]
+    c.textContent = optionText[2]
+    d.textContent = optionText[3] 
+```
+
+## Challenge 2
+
 ### Make the result window moveable
 
 - Use three eventListener: `mousedown`, `mousemove`, and `mouseup`
@@ -40,20 +78,23 @@ Player has five hearts, if the wrong answer was clicked, one heart lost; if all 
 ```
 resultWindow.addEventListener('mousedown', function (event) {
 
-    let shiftX = event.clientX - resultWindow.getBoundingClientRect().left
-    let shiftY = event.clientY - resultWindow.getBoundingClientRect().top
+    let windowLeft = resultWindow.getBoundingClientRect().left
+    let windowTop = resultWindow.getBoundingClientRect().top
+    
+    let shiftX = event.clientX - windowLeft
+    let shiftY = event.clientY - windowTop
 
     // get current coordinate and then set position to absolute
     resultWindow.style.position = 'absolute'
-    moveAt(event.clientX, event.clientY)
+    moveAt(event.pageX, event.pageY)
 
     function moveAt (x, y) {
         resultWindow.style.left = x - shiftX + 'px'
-        resultWindow.style.top = y - shiftY + 'px'       
+        resultWindow.style.top = y - shiftY + 'px'  
     }
 
     function onMove (event) {
-        moveAt(event.clientX, event.clientY)
+        moveAt(event.pageX, event.pageY)
     }    
     
     resultWindow.addEventListener('mousemove', onMove)
@@ -64,32 +105,6 @@ resultWindow.addEventListener('mousedown', function (event) {
     }
 })
 ```
-
-## Challenge 2
-
-### Let the reslute window only moves inside the container div
-
-Add condition: 
-```
-let edgeLeft = container.getBoundingClientRect().left
-if (resultWindow.getBoundingClientRect().left < edgeX) {
-    resultWindow.style.left = edgeX
-}
-```
-
-* Note that `resultWindow.style.left` returns `292px` but not `292`
-
-Change the condition to: 
-```
-if (resultWindow.getBoundingClientRect().left < edgeX) {
-    resultWindow.style.left = edgeX + 'px'
-}
-```
-
-* Note that `getBoundingClientRect().left` returns a number
-
-__This method work for left and top edges, but not right and bottom edges__
-Possible solution...
 
 ## Challenge 3
 
@@ -125,8 +140,11 @@ close.addEventListener('click', function() {
 })
 ```
 
+
 However, when moving the window, the `top` value was changed, this way doesn't work
+
 Then, I clear the style of `.result` in the script, it works 
+
 ```
 close.addEventListener('click', function() {
     resultWindow.style = ''
@@ -139,6 +157,33 @@ close.addEventListener('click', function() {
     }
 })
 ```
+
+## Challenge 4
+
+### Let the reslute window only moves inside the container div
+
+Add condition: 
+```
+let edgeLeft = container.getBoundingClientRect().left
+if (resultWindow.getBoundingClientRect().left < edgeX) {
+    resultWindow.style.left = edgeX
+}
+```
+
+* Note that `resultWindow.style.left` returns `292px` but not `292`
+
+Change the condition to: 
+```
+if (resultWindow.getBoundingClientRect().left < edgeX) {
+    resultWindow.style.left = edgeX + 'px'
+}
+```
+
+* Note that `getBoundingClientRect().left` returns a number
+
+__This method work for left and top edges, but not right and bottom edges__
+Possible solution...
+
 
 ## Open Source API
 
