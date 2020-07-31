@@ -1,5 +1,5 @@
-let container = document.querySelector('.container')
-let play = document.querySelector('#play-btn')
+// let container = document.querySelector('.container')
+let play = document.querySelector('.play-btn')
 let speaker = document.querySelector('#speaker')
 let intro = document.querySelector('.intro')
 let quiz = document.querySelector('.quiz')
@@ -20,7 +20,7 @@ let subregion = document.querySelector('.subregion')
 let capital = document.querySelector('.capital')
 let area = document.querySelector('.area')
 let population = document.querySelector('.population')
-let close = document.querySelector('#close-btn')
+let close = document.querySelector('.close-btn')
 let gameover = document.querySelector('.gameover')
 let finalCorrect = document.querySelector('#final-correct')
 let totalQuiz = document.querySelector('#total-quiz')
@@ -35,6 +35,8 @@ let correctCount = 0
 let wrongCount = 0
 let heartCount = 4
 let soundON = true
+
+/*------------------------Functions--------------------------*/
 
 // Display random chosen countries along with the flag country
 
@@ -66,7 +68,8 @@ function displayOptions() {
         let text = countriesData[options[i]]["name"]
         optionText.push(text)
     }
-    console.log(answerIndex, options, optionText)
+    
+    // console.log(answerIndex, options, optionText)
 
     // display country names stored in optionText[]
     a.textContent = optionText[0]
@@ -74,6 +77,8 @@ function displayOptions() {
     c.textContent = optionText[2]
     d.textContent = optionText[3]  
 }
+
+// -----------------------------------------------------
 
 // Show the result Window and change status bar
 
@@ -104,6 +109,8 @@ function showResult(theChoice){
     playerChoices.forEach(e => {e.disabled = true})
 }
 
+// -----------------------------------------------------
+
 // Restart the game
 
 function gameRestart() {
@@ -116,7 +123,10 @@ function gameRestart() {
     setTimeout(displayOptions(),600)
 }
 
+// -----------------------------------------------------
+
 // Show the game is over and display score
+
 function showEndGame(){
     quiz.style.display = 'none'
     gameover.style.display = 'block'
@@ -128,6 +138,9 @@ function showEndGame(){
     let endGameSound = new Audio('./sounds/gameover.wav')
     if (soundON) { endGameSound.play() }    
 }
+
+
+/*--------------------Fetch--------------------------- */
 
 // Fetch info from API
 
@@ -147,6 +160,8 @@ fetch("https://restcountries.eu/rest/v2/all")
     console.log(err)
 })
 
+/* ---------------------DOM--------------------------*/
+
 // Click [Let's Play] Button
 
 play.addEventListener('click', function() {
@@ -158,6 +173,8 @@ play.addEventListener('click', function() {
     if (soundON) { beginSound.play() }
 })
 
+// -----------------------------------------------------
+
 // Player make a choice
 
 playerChoices.forEach(choice => {
@@ -166,6 +183,8 @@ playerChoices.forEach(choice => {
         resultWindow.style.display = 'block'
     })
 })
+
+// -----------------------------------------------------
 
 // Close the result window & get into next quiz
 
@@ -180,11 +199,15 @@ close.addEventListener('click', function() {
     }
 })
 
+// -----------------------------------------------------
+
 // Click [restart]
 
 restart.addEventListener('click', function() {
     gameRestart()
 })
+
+// -----------------------------------------------------
 
 // Click [Play Again]
 playAgain.addEventListener('click', function() {
@@ -192,6 +215,8 @@ playAgain.addEventListener('click', function() {
     quiz.style.display = 'block'
     gameRestart()
 })
+
+// -----------------------------------------------------
 
 // Toggle speaker icon
 
@@ -207,18 +232,20 @@ speaker.addEventListener('click', function() {
     }
 })
 
-// Drag result window anywhere within container div
+// -----------------------------------------------------
+
+// Drag result window anywhere [within container div --- orz almost made it...]
 
 resultWindow.addEventListener('mousedown', function (event) {
     
-    let edgeLeft = container.getBoundingClientRect().left
-    let edgeTop = container.getBoundingClientRect().top
+    // let edgeLeft = container.getBoundingClientRect().left
+    // let edgeTop = container.getBoundingClientRect().top
 
     let windowLeft = resultWindow.getBoundingClientRect().left
     let windowTop = resultWindow.getBoundingClientRect().top
     
-    let shiftX = event.pageX - windowLeft
-    let shiftY = event.pageY - windowTop
+    let shiftX = event.clientX - windowLeft
+    let shiftY = event.clientY - windowTop
 
     // get current coordinate and then set position to absolute
     resultWindow.style.position = 'absolute'
@@ -230,19 +257,19 @@ resultWindow.addEventListener('mousedown', function (event) {
         resultWindow.style.top = y - shiftY + 'px'
 
         // set boundry for result window
-        if (windowLeft < edgeLeft) {
-            resultWindow.style.left = edgeLeft + 'px'
-        }
-        if (windowLeft > edgeLeft + 600) {
-            resultWindow.style.left = edgeLeft + 600 + 'px'
-        }
-        if (windowTop < edgeTop) {
-            resultWindow.style.top = edgeTop + 'px'
-        }
-        if (windowTop > edgeTop + 200) {
-            resultWindow.style.top = edgeTop + 200 + 'px'
-        }
-        
+        // Doesn't work if there is scroll in the browser
+        // if (x - edgeLeft < x - windowLeft) {
+        //     resultWindow.style.left = edgeLeft + 'px'
+        // }
+        // if (edgeLeft + 850 - x < windowLeft + 250 - x) {
+        //     resultWindow.style.left = edgeLeft + 600 + 'px'
+        // }
+        // if (windowTop < edgeTop) {
+        //     resultWindow.style.top = edgeTop + 'px'
+        // }
+        // if (windowTop > edgeTop + 200) {
+        //     resultWindow.style.top = edgeTop + 200 + 'px'
+        // }
     }
 
     function onMove (event) {
@@ -255,4 +282,10 @@ resultWindow.addEventListener('mousedown', function (event) {
         resultWindow.removeEventListener('mousemove', onMove)
         resultWindow.onmouseup = null
     }
+
 })
+
+// prevent conflict with browser's default drag’n’drop support
+resultWindow.ondragstart = function() {
+    return false;
+}
