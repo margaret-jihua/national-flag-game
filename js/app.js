@@ -35,7 +35,6 @@ let correctCount = 0
 let wrongCount = 0
 let heartCount = 4
 let soundON = true
-let usedIndex = [] // haven't use yet
 
 // Display random chosen countries along with the flag country
 
@@ -171,6 +170,7 @@ playerChoices.forEach(choice => {
 // Close the result window & get into next quiz
 
 close.addEventListener('click', function() {
+    resultWindow.style = ''
     resultWindow.style.display = 'none'
     setTimeout(displayOptions(),600)
     playerChoices.forEach(e => {e.disabled = false})
@@ -211,8 +211,12 @@ speaker.addEventListener('click', function() {
 
 resultWindow.addEventListener('mousedown', function (event) {
     
-    let edgeX = container.getBoundingClientRect().left
-    let edgeY = container.getBoundingClientRect().top
+    let edgeLeft = container.getBoundingClientRect().left
+    let edgeRight = container.getBoundingClientRect().right
+    let edgeTop = container.getBoundingClientRect().top
+    let edgeBottom = container.getBoundingClientRect().bottom
+
+    console.log(edgeBottom, resultWindow.getBoundingClientRect().bottom, resultWindow.style.bottom);
 
     let shiftX = event.clientX - resultWindow.getBoundingClientRect().left
     let shiftY = event.clientY - resultWindow.getBoundingClientRect().top
@@ -224,6 +228,19 @@ resultWindow.addEventListener('mousedown', function (event) {
     function moveAt (x, y) {
         resultWindow.style.left = x - shiftX + 'px'
         resultWindow.style.top = y - shiftY + 'px'
+        if (resultWindow.getBoundingClientRect().left < edgeLeft) {
+            resultWindow.style.left = edgeLeft + 'px'
+        }
+        if (resultWindow.getBoundingClientRect().right > edgeRight) {
+            resultWindow.style.right = edgeRight + 'px'
+        }
+        if (resultWindow.getBoundingClientRect().top < edgeTop) {
+            resultWindow.style.top = edgeTop + 'px'
+        }
+        if (resultWindow.getBoundingClientRect().bottom > edgeBottom) {
+            resultWindow.style.bottom = edgeBottom + 'px'
+        }
+        
     }
 
     function onMove (event) {
@@ -231,11 +248,9 @@ resultWindow.addEventListener('mousedown', function (event) {
     }    
     
     resultWindow.addEventListener('mousemove', onMove)
+    
     resultWindow.onmouseup = function() {
         resultWindow.removeEventListener('mousemove', onMove)
         resultWindow.onmouseup = null
     }
-        
-    resultWindow.ondragstart = function () {return false}
-
 })

@@ -21,12 +21,124 @@ Player has five hearts, if the wrong answer was clicked, one heart lost; if all 
 7. Set up the end-game page
 8. Show gameover when player loses all five hearts
 9. Display final score
-10. Add sound effect
+10. Add 4 sound effects 
 11. Add sound on/off symbol
 12. Add favicon to the title
 13. Make the result window moveable
 14. Allow the result window only move within the container div
-15. organize code, add div section to some css elements
+15. After close the result window, it returns back to original position
+16. organize code, add div section to some css elements
+
+## Challenge 1 
+
+### Make the result window moveable
+
+- Use three eventListener: `mousedown`, `mousemove`, and `mouseup`
+- Reference: https://javascript.info/mouse-drag-and-drop
+- Figure out x-y coodinates
+
+```
+resultWindow.addEventListener('mousedown', function (event) {
+
+    let shiftX = event.clientX - resultWindow.getBoundingClientRect().left
+    let shiftY = event.clientY - resultWindow.getBoundingClientRect().top
+
+    // get current coordinate and then set position to absolute
+    resultWindow.style.position = 'absolute'
+    moveAt(event.clientX, event.clientY)
+
+    function moveAt (x, y) {
+        resultWindow.style.left = x - shiftX + 'px'
+        resultWindow.style.top = y - shiftY + 'px'       
+    }
+
+    function onMove (event) {
+        moveAt(event.clientX, event.clientY)
+    }    
+    
+    resultWindow.addEventListener('mousemove', onMove)
+    
+    resultWindow.onmouseup = function() {
+        resultWindow.removeEventListener('mousemove', onMove)
+        resultWindow.onmouseup = null
+    }
+})
+```
+
+## Challenge 2
+
+### Let the reslute window only moves inside the container div
+
+Add condition: 
+```
+let edgeLeft = container.getBoundingClientRect().left
+if (resultWindow.getBoundingClientRect().left < edgeX) {
+    resultWindow.style.left = edgeX
+}
+```
+
+* Note that `resultWindow.style.left` returns `292px` but not `292`
+
+Change the condition to: 
+```
+if (resultWindow.getBoundingClientRect().left < edgeX) {
+    resultWindow.style.left = edgeX + 'px'
+}
+```
+
+* Note that `getBoundingClientRect().left` returns a number
+
+__This method work for left and top edges, but not right and bottom edges__
+Possible solution...
+
+## Challenge 3
+
+### Return result window to its original position, so that next time it show up at the same place
+
+Tried to add back what I had from style sheet, `position`, `bottom`, `left`:
+```
+.result {
+    display: none;
+    background-color: lightsalmon;
+    opacity: 95%;
+    height: 300px;
+    width: 250px;
+    border: salmon solid;
+    border-radius: 10px;
+    position: relative;
+    bottom: 80%;
+    left: 35%;
+}
+```
+```
+close.addEventListener('click', function() {
+    resultWindow.style.display = 'none'
+    resultWindow.style.postion = 'relative'
+    resultWindow.style.bottom = '80%'
+    resultWindow.style.left = '35%'
+    setTimeout(displayOptions(),600)
+    playerChoices.forEach(e => {e.disabled = false})
+    // if no more hearts show gameover
+    if (heartCount < 0){
+        setTimeout(showEndGame(),600)
+    }
+})
+```
+
+However, when moving the window, the `top` value was changed, this way doesn't work
+Then, I clear the style of `.result` in the script, it works 
+```
+close.addEventListener('click', function() {
+    resultWindow.style = ''
+    resultWindow.style.display = 'none'
+    setTimeout(displayOptions(),600)
+    playerChoices.forEach(e => {e.disabled = false})
+    // if no more hearts show gameover
+    if (heartCount < 0){
+        setTimeout(showEndGame(),600)
+    }
+})
+```
 
 ## Open Source API
 
