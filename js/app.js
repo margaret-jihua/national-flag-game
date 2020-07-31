@@ -212,39 +212,41 @@ speaker.addEventListener('click', function() {
 resultWindow.addEventListener('mousedown', function (event) {
     
     let edgeLeft = container.getBoundingClientRect().left
-    let edgeRight = container.getBoundingClientRect().right
     let edgeTop = container.getBoundingClientRect().top
-    let edgeBottom = container.getBoundingClientRect().bottom
 
-    console.log(edgeBottom, resultWindow.getBoundingClientRect().bottom, resultWindow.style.bottom);
-
-    let shiftX = event.clientX - resultWindow.getBoundingClientRect().left
-    let shiftY = event.clientY - resultWindow.getBoundingClientRect().top
+    let windowLeft = resultWindow.getBoundingClientRect().left
+    let windowTop = resultWindow.getBoundingClientRect().top
+    
+    let shiftX = event.pageX - windowLeft
+    let shiftY = event.pageY - windowTop
 
     // get current coordinate and then set position to absolute
     resultWindow.style.position = 'absolute'
-    moveAt(event.clientX, event.clientY)
+    moveAt(event.pageX, event.pageY)
 
     function moveAt (x, y) {
+
         resultWindow.style.left = x - shiftX + 'px'
         resultWindow.style.top = y - shiftY + 'px'
-        if (resultWindow.getBoundingClientRect().left < edgeLeft) {
+
+        // set boundry for result window
+        if (windowLeft < edgeLeft) {
             resultWindow.style.left = edgeLeft + 'px'
         }
-        if (resultWindow.getBoundingClientRect().right > edgeRight) {
-            resultWindow.style.right = edgeRight + 'px'
+        if (windowLeft > edgeLeft + 600) {
+            resultWindow.style.left = edgeLeft + 600 + 'px'
         }
-        if (resultWindow.getBoundingClientRect().top < edgeTop) {
+        if (windowTop < edgeTop) {
             resultWindow.style.top = edgeTop + 'px'
         }
-        if (resultWindow.getBoundingClientRect().bottom > edgeBottom) {
-            resultWindow.style.bottom = edgeBottom + 'px'
+        if (windowTop > edgeTop + 200) {
+            resultWindow.style.top = edgeTop + 200 + 'px'
         }
         
     }
 
     function onMove (event) {
-        moveAt(event.clientX, event.clientY)
+        moveAt(event.pageX, event.pageY)
     }    
     
     resultWindow.addEventListener('mousemove', onMove)
