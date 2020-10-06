@@ -10,6 +10,15 @@ Flags help us to identify different countries around the world. A country's flag
 
 Player has five hearts, if the wrong answer was clicked, one heart lost; if all five hearts were lost, player loses the game. 
 
+## Game Layouts
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-gap: 30px">
+    <img src="assets/start.png" alt="start">
+    <img src="assets/quiz.png" alt="quiz">
+    <img src="assets/answer.png" alt="answer">
+    <img src="assets/gameover.png" alt="gameover">
+</div>
+
 ## Building Process
 
 1. Set up the Intro page layout and play button

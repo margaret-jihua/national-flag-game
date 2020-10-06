@@ -8,8 +8,9 @@ body {
 
 h1 {
     font-family: cursive;
-    font-size: 3rem;
+    font-size: 2rem;
     text-shadow: 2px 2px rgb(145, 114, 68, 0.6);
+    margin: 5px;
 }
 
 h2 {

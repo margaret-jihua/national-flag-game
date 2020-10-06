@@ -236,50 +236,51 @@ speaker.addEventListener('click', function() {
 
 // Drag result window anywhere [within container div --- orz almost made it...]
 
+
+    // set boundry for result window
+    // Doesn't work if there is scroll in the browser
+    // if (x - edgeLeft < x - windowLeft) {
+    //     resultWindow.style.left = edgeLeft + 'px'
+    // }
+    // if (edgeLeft + 850 - x < windowLeft + 250 - x) {
+    //     resultWindow.style.left = edgeLeft + 600 + 'px'
+    // }
+    // if (windowTop < edgeTop) {
+    //     resultWindow.style.top = edgeTop + 'px'
+    // }
+    // if (windowTop > edgeTop + 200) {
+    //     resultWindow.style.top = edgeTop + 200 + 'px'
+    // }
+
+
+// function onMove (event) {
+//     moveAt(event.pageX, event.pageY)             
+//  } 
+
 resultWindow.addEventListener('mousedown', function (event) {
+    // get current coordinate and then set position to absolute
+    resultWindow.style.position = 'absolute'
+    // moveAt(event.pageX, event.pageY)
+    moveAt(event)
     
+    function moveAt (event) {
     // let edgeLeft = container.getBoundingClientRect().left
     // let edgeTop = container.getBoundingClientRect().top
 
     let windowLeft = resultWindow.getBoundingClientRect().left
     let windowTop = resultWindow.getBoundingClientRect().top
     
-    let shiftX = event.clientX - windowLeft
-    let shiftY = event.clientY - windowTop
+    let shiftX = event.PageX - windowLeft
+    let shiftY = event.pageY - windowTop
 
-    // get current coordinate and then set position to absolute
-    resultWindow.style.position = 'absolute'
-    moveAt(event.pageX, event.pageY)
-
-    function moveAt (x, y) {
-
-        resultWindow.style.left = x - shiftX + 'px'
-        resultWindow.style.top = y - shiftY + 'px'
-        
-        // set boundry for result window
-        // Doesn't work if there is scroll in the browser
-        // if (x - edgeLeft < x - windowLeft) {
-        //     resultWindow.style.left = edgeLeft + 'px'
-        // }
-        // if (edgeLeft + 850 - x < windowLeft + 250 - x) {
-        //     resultWindow.style.left = edgeLeft + 600 + 'px'
-        // }
-        // if (windowTop < edgeTop) {
-        //     resultWindow.style.top = edgeTop + 'px'
-        // }
-        // if (windowTop > edgeTop + 200) {
-        //     resultWindow.style.top = edgeTop + 200 + 'px'
-        // }
-    }
-
-    function onMove (event) {
-        moveAt(event.pageX, event.pageY)
-    }    
     
-    resultWindow.addEventListener('mousemove', onMove)
+    resultWindow.style.left = event.pageX - shiftX + 'px'
+    resultWindow.style.top = event.pageY - shiftY + 'px'
+}
+    resultWindow.addEventListener('mousemove', moveAt(event))
     
     resultWindow.onmouseup = function() {
-        resultWindow.removeEventListener('mousemove', onMove)
+        resultWindow.removeEventListener('mousemove', moveAt(event))
         resultWindow.onmouseup = null
     }
 })
