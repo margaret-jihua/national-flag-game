@@ -12,11 +12,11 @@ Player has five hearts, if the wrong answer was clicked, one heart lost; if all 
 
 ## Game Layouts
 
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-gap: 30px">
-    <img src="assets/start.png" alt="start" width="500">
-    <img src="assets/quiz.png" alt="quiz" width="500">
-    <img src="assets/answer.png" alt="answer" width="500">
-    <img src="assets/gameover.png" alt="gameover" width="500">
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-gap: 40px">
+    <img src="assets/start.png" alt="start" width="500" height="350">
+    <img src="assets/quiz.png" alt="quiz" width="500" height="350">
+    <img src="assets/answer.png" alt="answer" width="500" height="350">
+    <img src="assets/gameover.png" alt="gameover" width="500" height="350">
 </div>
 
 ## Building Process
